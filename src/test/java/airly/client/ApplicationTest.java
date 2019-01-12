@@ -28,6 +28,18 @@ public class ApplicationTest {
     }
 
     @Test
+    public void limitPropertiesShouldBeRead() {
+        assertThat(applicationProperties.getLimitDay()).isGreaterThan(0);
+        assertThat(applicationProperties.getLimitMinute()).isGreaterThan(0);
+    }
+
+    @Test
+    public void installationIdsPropertyShouldBeRead() {
+        assertThat(applicationProperties.getInstallationIds()).isNotEmpty();
+        assertThat(applicationProperties.getInstallationIds().get(0)).isGreaterThan(0);
+    }
+
+    @Test
     public void keyPropertyShouldBeRead() {
         assertThat(airlyProperties.getKey()).isNotEmpty();
     }
