@@ -15,13 +15,33 @@ public class ApplicationTest {
     @Autowired
     ApplicationProperties applicationProperties;
 
+    @Autowired
+    AirlyProperties airlyProperties;
+
     @Test
     public void contextShouldStart() {
     }
 
     @Test
-    public void propertyShouldBeRead() {
-        assertThat(applicationProperties.getApiUrl()).isEqualTo("https://airapi.airly.eu/v2");
+    public void urlPropertyShouldBeRead() {
+        assertThat(applicationProperties.getApiUrl()).isNotEmpty();
+    }
+
+    @Test
+    public void limitPropertiesShouldBeRead() {
+        assertThat(applicationProperties.getLimitDay()).isGreaterThan(0);
+        assertThat(applicationProperties.getLimitMinute()).isGreaterThan(0);
+    }
+
+    @Test
+    public void installationIdsPropertyShouldBeRead() {
+        assertThat(applicationProperties.getInstallationIds()).isNotEmpty();
+        assertThat(applicationProperties.getInstallationIds().get(0)).isGreaterThan(0);
+    }
+
+    @Test
+    public void keyPropertyShouldBeRead() {
+        assertThat(airlyProperties.getKey()).isNotEmpty();
     }
 
 }
